@@ -2,7 +2,7 @@
 
 **My Virtual Girlfriend** is a new piece of revolutionary software that will make your sad fucking lives so much better!
 
-Here are some of the things **My Virtual Girlfriend** can do!
+Here are some of the things **My Virtual Girlfriend** can do:
 
 Underage | Legal and ready to meengal?
 ------------ | -------------
