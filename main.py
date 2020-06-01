@@ -3,19 +3,21 @@
 import json
 
 config = json.load(open("./config.json"))
-relationship = True 
-age = None
 
 # Age 0: Underage
 # Age 1: Adult
 age = 0 if int(config["age"]) < 18 else 1 
 
-def log(logType=None, Text=None):
-    if logType == "error": print(f"[Error] {Text}")
-    if logType == "success": print(f"[Success] {Text}")
-    if logType == "warn": print(f"[Warning] {Text}")
-    if logType == "info": print(f"[Info] {Text}")
-    if logType == "notice": print(f"[Notice] {Text}")
+if int(config["term_color"]) is 1:
+    def log(logType=None, Text=None):
+        if logType == "error": print(f"\033[31m[Error]\033[0m {Text}")
+        if logType == "success": print(f"\033[92m[Success]\033[0m {Text}")
+        if logType == "warn": print(f"\033[93m[Warning]\033[0m {Text}")
+        if logType == "info": print(f"\033[96m[Info]\033[0m {Text}")
+        if logType == "notice": print(f"\033[95m[Notice]\033[0m {Text}")
+else:
+    def log(logType=None, Text=None):
+        print(f"[{logType.capitalize()}] {Text}")
 
 commands = {
     0 : {
@@ -37,14 +39,11 @@ log("info","To enter SETUP press F12 or DEL")
 log("info","Starting virtual girlfriend...")
 log("info",f"Her name: {config['gfname']}")
 log("info",f"Her age: {config['age']}")
-log("info",f"Your name: {config['bfname']}")
-print("\n")
+log("info",f"Your name: {config['bfname']}\n")
 
-while relationship: 
-    inp = input(f">>> ")
-    if inp.lower() in ["sex", "cum"]: print(commands[age]["sex"])
-    elif inp.lower() == "hash": print(commands[age]["hash"])
-    elif inp.lower() == "linux": print(commands[age]["linux"])
-    elif inp.lower() == "cum": print(commands[age]["cum"])
-    elif inp.lower() not in commands: print(commands["default"])
+while True: 
+    inp = input(">>> ").lower()
+    if inp.lower() not in commands[age]: print(commands["default"])
+    else: print(commands[age][inp])
 
+# TODO: MEME THEORY HERE
