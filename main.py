@@ -13,16 +13,18 @@ else:
     def log(logType=None, Text=None):
         print(f"[{logType.capitalize()}] {Text}")
 
+# NOTE: If the age in config file is bellow 18 then we consider that underage and get a different response.
+# Of course that is applied to if the age is equal or above 18.
 def replyTo(userInput):
     output = f"{config['gfName']} >> "
     if re.search(r"(^|[^A-Ba-b])sex([^A-Ba-b]|$)", userInput, re.IGNORECASE):
-        output += f"What the heck you super duper creepy perv!" if int(config["age"]) >= 18 else f"Fuck off {config['bfName']}."
+        output += f"What the heck you super duper creepy perv!" if int(config["age"]) < 18 else f"Fuck off {config['bfName']}."
     elif re.search(r"(^|[^A-Ba-b])hash([^A-Ba-b]|$)", userInput, re.IGNORECASE):
-        output += f"He's a loser." if int(config["age"]) >= 18 else f"Will be getting a restraining order."
+        output += f"He's a loser." if int(config["age"]) < 18 else f"Will be getting a restraining order."
     elif re.search(r"(^|[^A-Ba-b])cum([^A-Ba-b]|$)", userInput, re.IGNORECASE):
-        output += f"What the heck you super duper creepy perv!" if int(config["age"]) >= 18 else f"Go kill yourself."
+        output += f"What the heck you super duper creepy perv!" if int(config["age"]) < 18 else f"Go kill yourself."
     elif re.search(r"(^|[^A-Ba-b])linux([^A-Ba-b]|$)", userInput, re.IGNORECASE):
-        output += f"Shut up." if int(config["age"]) >= 18 else f"No one likes you {config['bfName']}."
+        output += f"Shut up." if int(config["age"]) < 18 else f"No one likes you {config['bfName']}."
     else: output += "Go away."
     return output
 
