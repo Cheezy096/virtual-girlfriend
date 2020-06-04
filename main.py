@@ -2,7 +2,7 @@ import json, re
 
 config = json.load(open("./config.json"))
 
-if int(config["termColor"]) == 1:
+if int(config["termColour"]) == 1:
     def log(logType=None, Text=None):
         if logType == "error": print(f"\033[31m[Error]\033[0m {Text}")
         if logType == "success": print(f"\033[92m[Success]\033[0m {Text}")
